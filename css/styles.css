@@ -1,0 +1,195 @@
+/* ==========================================================================
+   Galería "Iglesia" — hoja de estilos
+   ========================================================================== */
+
+/* Variables de diseño */
+:root {
+  --fondo-arriba: #1b1512;
+  --fondo-abajo: #0c0a09;
+  --superficie: #211a16;
+  --borde: rgba(214, 178, 116, 0.28);
+  --acento: #d6b274;
+  --texto: #f3ece2;
+  --texto-suave: #b6a595;
+  --sombra: rgba(0, 0, 0, 0.55);
+  --radio: 18px;
+}
+
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--texto);
+  background:
+    radial-gradient(120% 90% at 50% 0%, #2a201a 0%, transparent 60%),
+    linear-gradient(180deg, var(--fondo-arriba) 0%, var(--fondo-abajo) 100%);
+  background-attachment: fixed;
+  line-height: 1.6;
+}
+
+/* Contenedor principal */
+.pagina {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Encabezado */
+.encabezado {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.etiqueta {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--acento);
+}
+
+.titulo {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.1rem, 7vw, 3.4rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.titulo::after {
+  content: "";
+  display: block;
+  width: 62px;
+  height: 1px;
+  margin: 0.9rem auto 0;
+  background: linear-gradient(90deg, transparent, var(--acento), transparent);
+}
+
+.subtitulo {
+  margin: 0.9rem auto 0;
+  max-width: 34ch;
+  font-size: clamp(0.9rem, 2.4vw, 1rem);
+  color: var(--texto-suave);
+}
+
+/* Marco de la imagen */
+.marco {
+  margin: 0;
+  padding: clamp(0.6rem, 1.6vw, 0.9rem);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: 0 24px 60px -24px var(--sombra), 0 2px 0 rgba(255, 255, 255, 0.04) inset;
+  backdrop-filter: blur(2px);
+}
+
+.marco__enlace {
+  display: block;
+  overflow: hidden;
+  border-radius: calc(var(--radio) - 8px);
+  background: var(--superficie);
+  line-height: 0;
+  cursor: zoom-in;
+  outline-offset: 4px;
+}
+
+.marco__enlace:focus-visible {
+  outline: 2px solid var(--acento);
+}
+
+.marco__imagen {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(64vh, 620px);
+  margin: 0 auto;
+  border-radius: calc(var(--radio) - 8px);
+  transition: transform 350ms ease, filter 350ms ease;
+}
+
+.marco__enlace:hover .marco__imagen,
+.marco__enlace:focus-visible .marco__imagen {
+  transform: scale(1.02);
+  filter: brightness(1.04);
+}
+
+.marco__pie {
+  margin: 0.85rem 0 0.15rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--texto-suave);
+}
+
+/* Pie de página */
+.pie {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(182, 165, 149, 0.65);
+}
+
+.pie p {
+  margin: 0;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start;
+  }
+
+  .marco__imagen {
+    max-height: none;
+    width: 100%;
+  }
+
+  .marco__pie {
+    font-size: 0.72rem;
+  }
+}
+
+/* Impresión: la imagen sin decoración */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .marco,
+  .pie,
+  .etiqueta,
+  .subtitulo {
+    display: none;
+  }
+}
+
+/* Accesibilidad: reducir animaciones */
+@media (prefers-reduced-motion: reduce) {
+  .marco__imagen {
+    transition: none;
+  }
+
+  .marco__enlace:hover .marco__imagen,
+  .marco__enlace:focus-visible .marco__imagen {
+    transform: none;
+  }
+}

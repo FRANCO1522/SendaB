@@ -1,0 +1,23 @@
+# ───────────────────────────────────────────────────────────────────────────
+# Senda B · despliegue en Render
+# Servicio web Node que sirve un sitio estático: sin disco persistente,
+# sin base de datos, sin variables secretas.
+#
+# Cómo usarlo: sube el proyecto a GitHub y, en Render, elige
+# «New → Blueprint» y apunta al repositorio. Render lee este archivo.
+# ───────────────────────────────────────────────────────────────────────────
+services:
+  - type: web
+    name: nueva-canaan
+    runtime: node
+    plan: free
+    region: oregon
+    branch: main
+    autoDeploy: true
+    # El proyecto no tiene dependencias: no hay nada que compilar.
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production

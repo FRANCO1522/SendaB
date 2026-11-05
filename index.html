@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0c0a09">
+  <title>Nueva Canaán · Senda B | Galería de la comunidad</title>
+  <meta name="description" content="Galería fotográfica de la comunidad de Nueva Canaán, Senda B, municipio de Chimoré, departamento de Cochabamba (Bolivia).">
+  <meta name="robots" content="index, follow">
+
+  <!--
+    Portada de la galería. Abre el portal completo con TODAS las fotografías
+    de la comunidad, que está en public/index.html.
+    Con el servidor de Node (server.js) la galería se publica directamente en
+    http://localhost:3000; este archivo permite que un doble clic en
+    index.html también muestre todas las fotografías y no solo la iglesia.
+  -->
+  <meta http-equiv="refresh" content="0; url=public/index.html">
+  <link rel="canonical" href="public/index.html">
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      background: #0c0a09;
+      color: #efe6d8;
+      font-family: Manrope, system-ui, -apple-system, "Segoe UI", sans-serif;
+      text-align: center;
+    }
+    main { max-width: 48ch; }
+    .etiqueta {
+      margin: 0 0 0.9rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #d6b274;
+    }
+    h1 {
+      margin: 0 0 1rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      color: #e8cd93;
+    }
+    p { margin: 0 0 1.6rem; color: #c9bda9; line-height: 1.8; }
+    a {
+      display: inline-block;
+      padding: 0.85rem 1.9rem;
+      border: 1px solid rgba(214, 178, 116, 0.5);
+      border-radius: 999px;
+      color: #e8cd93;
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: background-color 0.25s ease;
+    }
+    a:hover, a:focus-visible { background: rgba(214, 178, 116, 0.14); }
+    .nota { margin-top: 1.6rem; margin-bottom: 0; font-size: 0.78rem; color: #8c8175; line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="etiqueta">Galería fotográfica</p>
+    <h1>Nueva Canaán · Senda B</h1>
+    <p>Abriendo la galería con todas las fotografías de la comunidad: la iglesia, la guardería, el colegio, las canchas, las empresas, el río y los caminos de Senda B.</p>
+    <a href="public/index.html">Abrir la galería completa</a>
+    <p class="nota">
+      Si el enlace no abre, ejecuta <strong>npm start</strong> en esta carpeta y entra a
+      <strong>http://localhost:3000</strong>.
+    </p>
+  </main>
+</body>
+</html>

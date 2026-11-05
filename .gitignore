@@ -1,0 +1,32 @@
+# Dependencias (el proyecto no usa ninguna, pero por si acaso)
+node_modules/
+npm-debug.log*
+
+# Variables de entorno locales
+.env
+.env.local
+
+# Carpetas y archivos de trabajo o de verificación (no son parte del sitio)
+_tools/
+_git/
+_datos_prueba/
+_chrome_perfil/
+_respaldo*/
+_node.zip
+_*.txt
+_*.log
+_*.err
+_*.png
+_*.ps1
+_*.js
+_*.html
+
+# Credenciales (nunca se publican)
+.env.*
+!.env.example
+.netrc
+*git-credentials*
+
+# Sistema
+.DS_Store
+Thumbs.db
