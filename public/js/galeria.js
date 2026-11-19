@@ -79,6 +79,14 @@
     return encontrada ? encontrada.nombre : "Galería";
   }
 
+  /* Una fotografía puede pertenecer a su categoría específica y también a una
+     categoría amplia (por ejemplo, «Educación»), sin duplicarse en la galería. */
+  function pertenece(lugar, id) {
+    if (id === "todas") return true;
+    const categorias = Array.isArray(lugar.categorias) ? lugar.categorias : [lugar.categoria];
+    return categorias.indexOf(id) !== -1;
+  }
+
   function parrafos(texto) {
     return String(texto || "")
       .split(/\n\s*\n/)
@@ -126,6 +134,14 @@
         id: String(lugar.id),
         titulo: String(lugar.titulo),
         categoria: String(lugar.categoria || ""),
+        categorias: Array.from(
+          new Set(
+            [lugar.categoria]
+              .concat(Array.isArray(lugar.categoriasAdicionales) ? lugar.categoriasAdicionales : [])
+              .filter(Boolean)
+              .map(String)
+          )
+        ),
         imagen: String(lugar.imagen),
         alt: String(lugar.alt || lugar.titulo),
         resumen: String(lugar.resumen || primerParrafo(lugar.descripcion)),
@@ -244,6 +260,7 @@
         id: "foto-" + identificador,
         titulo: titulo,
         categoria: categoria,
+        categorias: [categoria],
         imagen: url,
         alt: "Fotografía de " + titulo + " en la comunidad de Nueva Canaán, Senda B",
         resumen:
@@ -337,7 +354,7 @@
      ------------------------------------------------------------------ */
   function contarPorCategoria(id) {
     if (id === "todas") return estado.lugares.length;
-    return estado.lugares.filter((lugar) => lugar.categoria === id).length;
+    return estado.lugares.filter((lugar) => pertenece(lugar, id)).length;
   }
 
   function renderFiltros() {
@@ -346,7 +363,7 @@
 
     const categorias = estado.categorias.slice();
     const huerfanas = estado.lugares
-      .map((lugar) => lugar.categoria)
+      .reduce((todas, lugar) => todas.concat(Array.isArray(lugar.categorias) ? lugar.categorias : [lugar.categoria]), [])
       .filter((id) => id && !categorias.some((categoria) => categoria.id === id));
 
     Array.from(new Set(huerfanas)).forEach((id) => {
@@ -382,7 +399,7 @@
     const palabras = consulta ? consulta.split(/\s+/).filter(Boolean) : [];
 
     estado.visibles = estado.lugares.filter((lugar) => {
-      if (estado.filtro !== "todas" && lugar.categoria !== estado.filtro) return false;
+      if (!pertenece(lugar, estado.filtro)) return false;
       if (!palabras.length) return true;
       const contenido = normalizar(
         [lugar.titulo, lugar.resumen, lugar.descripcion, lugar.alt, nombreCategoria(lugar.categoria)].join(" ")

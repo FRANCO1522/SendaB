@@ -618,7 +618,9 @@
   </button>
 
   <script src="js/config.js"></script>
-  <script src="js/datos.js"></script>
-  <script src="js/galeria.js" defer></script>
+  <!-- Sube el número de "v" cuando cambie js/datos.js: fuerza a recargar el
+       catálogo en los navegadores que ya lo tenían guardado en caché. -->
+  <script src="js/datos.js?v=3"></script>
+  <script src="js/galeria.js?v=3" defer></script>
 </body>
 </html>

@@ -9,6 +9,8 @@
      id          identificador único (sin espacios ni tildes)
      titulo      nombre del lugar
      categoria   id de una de las categorías de "categorias"
+     categoriasAdicionales (opcional) otros ids de categoría en los que aparece la
+                 misma fotografía, sin duplicarla (ej.: ['educacion'])
      imagen      ruta relativa a la carpeta public/ (ej.: imagenes/iglesia.jpg)
      alt         texto alternativo para accesibilidad
      resumen     descripción breve que aparece en la tarjeta
@@ -26,7 +28,7 @@
 
 window.SENDA_GALERIA = {
   version: 1,
-  actualizado: '2026-11-05',
+  actualizado: '2026-11-19',
 
   categorias: [
     {
@@ -43,6 +45,26 @@ window.SENDA_GALERIA = {
       id: 'educacion',
       nombre: 'Educación',
       descripcion: 'Unidades educativas y espacios de aprendizaje.'
+    },
+    {
+      id: 'firma-de-convenios',
+      nombre: 'Firma de convenios',
+      descripcion: 'Encuentros y acuerdos que acompañan el trabajo de la comunidad.'
+    },
+    {
+      id: 'inauguracion-aulas-educativas',
+      nombre: 'Inauguración de aulas educativas',
+      descripcion: 'Nuevos espacios para la formación de niños y jóvenes de Senda B.'
+    },
+    {
+      id: 'museo-educativo',
+      nombre: 'Museo educativo',
+      descripcion: 'Un espacio donde el patrimonio de la comunidad se comparte para aprender.'
+    },
+    {
+      id: 'museos',
+      nombre: 'Museos',
+      descripcion: 'Lugares que conservan y dan a conocer la memoria de Nueva Canaán.'
     },
     {
       id: 'paisajes',
@@ -283,6 +305,76 @@ window.SENDA_GALERIA = {
         'El río forma parte del paisaje y del entorno natural de Senda B; conocerlo es también entender la relación de la comunidad con la naturaleza que la rodea.',
       destacado: false,
       orden: 12
+    },
+    {
+      id: 'firma-de-convenio',
+      titulo: 'Firma de convenio',
+      categoria: 'firma-de-convenios',
+      categoriasAdicionales: ['educacion'],
+      imagen: 'imagenes/firma-de-convenio.jpg',
+      alt: 'Registro del acto de firma de convenio de la comunidad de Nueva Canaán, Senda B.',
+      resumen: 'Un momento del camino organizativo de la comunidad: el encuentro para firmar un convenio que abre nuevas posibilidades para Senda B.',
+      descripcion:
+        'La fotografía registra el acto de firma de convenio de la comunidad de Nueva Canaán, Senda B. Es un registro sencillo y valioso: el instante en que la comunidad se reúne para sellar un acuerdo y dejar constancia de un compromiso compartido.\n\n' +
+        'Los convenios son parte del trabajo cotidiano de los pueblos: ayudan a organizar esfuerzos, a sumar voluntades y a acercar oportunidades a las familias. En Senda B, este encuentro forma parte del camino de la comunidad y de su empeño por construir en conjunto.\n\n' +
+        'Ver esta imagen es mirar el lado organizativo del turismo comunitario: además de paisajes y lugares, Nueva Canaán tiene una gente que se reúne, conversa y decide.',
+      importancia:
+        'Este registro rescata un momento de la vida comunitaria y subraya el valor del trabajo conjunto para impulsar proyectos en Senda B.',
+      destacado: false,
+      orden: 13
+    },
+    {
+      id: 'inauguracion-aulas-educativas',
+      titulo: 'Inauguración de aulas educativas',
+      categoria: 'inauguracion-aulas-educativas',
+      categoriasAdicionales: ['educacion'],
+      /* El nombre del archivo conserva la grafía del original («inaguracion»)
+         para que el descubrimiento automático de fotos no lo agregue dos veces. */
+      imagen: 'imagenes/inaguracion-de-aulas-educativas.jpg',
+      alt: 'Registro del acto de inauguración de las nuevas aulas educativas de la comunidad de Nueva Canaán, Senda B.',
+      resumen: 'El momento en que la comunidad celebró la apertura de nuevas aulas para sus niños y jóvenes.',
+      descripcion:
+        'La imagen corresponde al acto de inauguración de las nuevas aulas educativas de Nueva Canaán, Senda B. Más que una construcción, lo que se inaugura es un espacio para que los niños y jóvenes de la comunidad sigan aprendiendo cerca de su casa.\n\n' +
+        'En la vida de un pueblo, abrir un aula es una noticia que se comparte: familias, estudiantes y vecinos se acercan a conocer el lugar que pasa a formar parte de su día a día. La fotografía conserva ese ambiente de encuentro y de expectativa.\n\n' +
+        'Esta imagen se suma a la galería para mostrar el lado educativo de Senda B: el esfuerzo constante por ampliar las oportunidades de formación en la comunidad.',
+      importancia:
+        'Las nuevas aulas amplían los espacios de aprendizaje de la comunidad y son una muestra del valor que Senda B da a la educación de sus niños y jóvenes.',
+      destacado: false,
+      orden: 14
+    },
+    {
+      id: 'museo-educativo',
+      titulo: 'Museo educativo',
+      categoria: 'museo-educativo',
+      categoriasAdicionales: ['educacion'],
+      imagen: 'imagenes/museo-educativo.jpg',
+      alt: 'Vista del museo educativo de la comunidad de Nueva Canaán, Senda B.',
+      resumen: 'Un espacio de la comunidad donde el patrimonio local se convierte en una oportunidad de aprendizaje para grandes y pequeños.',
+      descripcion:
+        'El museo educativo de Nueva Canaán es un lugar pensado para que la comunidad y sus visitantes se acerquen al patrimonio de Senda B de una manera cercana y formativa. La fotografía lo muestra como parte del recorrido cultural del pueblo.\n\n' +
+        'Un museo educativo cumple una doble función: conserva lo que la comunidad quiere recordar y lo comparte con quienes vienen a conocerlo. Es un espacio donde la historia, las costumbres y la vida cotidiana pueden acercarse a las nuevas generaciones.\n\n' +
+        'Incluirlo en esta galería permite al visitante descubrir otra faceta de Senda B: una comunidad que cuida su memoria y la ofrece como parte de su experiencia turística.',
+      importancia:
+        'El museo educativo conecta el patrimonio de la comunidad con el aprendizaje, y permite que los visitantes conozcan Senda B desde sus propias historias.',
+      destacado: false,
+      orden: 15
+    },
+    {
+      id: 'museo-de-la-comunidad',
+      titulo: 'Museo de la comunidad',
+      categoria: 'museos',
+      categoriasAdicionales: ['educacion'],
+      imagen: 'imagenes/museo.jpg',
+      alt: 'Vista del museo de la comunidad de Nueva Canaán, Senda B.',
+      resumen: 'El museo de Nueva Canaán: un lugar para conservar y compartir la memoria colectiva de Senda B.',
+      descripcion:
+        'El museo de la comunidad guarda y comparte la memoria de Nueva Canaán, Senda B. La fotografía lo presenta como un punto de visita para quienes quieren conocer al pueblo más allá de sus paisajes.\n\n' +
+        'En los museos comunitarios, lo que se muestra cobra sentido gracias a las historias que la propia gente comparte. Son lugares donde los vecinos reconocen su pasado y los visitantes encuentran una mirada cercana a la vida local.\n\n' +
+        'Su presencia en la galería invita a mirar Senda B con atención: cada espacio que la comunidad abre al público es también una forma de decir quién es y qué quiere conservar.',
+      importancia:
+        'El museo mantiene viva la memoria del pueblo y la pone a disposición de las familias y de quienes llegan a conocer la comunidad.',
+      destacado: false,
+      orden: 16
     }
   ]
 };
